@@ -62,3 +62,57 @@ console.log(counter1()); // 0
 console.log(counter1()); // 1
 let counter2 = setupCounter(10);
 console.log(counter2()) // 10
+
+// Arrow Function Example
+
+// Regular Function
+let regularGreeting = function() {
+	return 'Hello World! inside regularGreeting function';
+};
+
+let message5 = regularGreeting();
+console.log(message5);
+
+// Arrow Function
+let arrowGreeting = () => 'Hello World! inside arrowGreeting function'; // Since the function body only has one statement you can have it even more simplified
+
+let message6 = arrowGreeting();
+console.log(message6);
+
+// Further example
+let greet = function greeting(name) {
+	return `Hello ${name}`;
+}
+let message7 = greet('Kevin');
+console.log(message7);
+
+let greetArrow = (name, age, maritalStatus) => `Hello ${name}, I see you're ${age} and ${maritalStatus}`;
+let message8 = greetArrow('Kevin Fontana', 32, 'married');
+console.log(message8);
+
+// Further Example
+function sum(num1, num2) {
+	return num1 + num2
+}
+
+let output = sum(10, 5);
+console.log(output);
+
+let arrowSum = (num1, num2) => num1 + num2;
+let outputArrow = arrowSum(10, 10);
+console.log(outputArrow);
+
+// This Keyword
+let messageObj = {
+	name: 'Kevin',
+	regularFunction: function() {
+		console.log('messageObj: ', this); // messageObj
+		console.log(`Hello ${this.name}`); // Hello Kevin
+	},
+	arrowFunction: () => {
+		console.log(`Hi ${this.name}`) // This only prints "Hi" and is pointed to the window object 
+		console.log('arrowFunction: ', this) // this is pointed to the window object 
+	}
+};
+messageObj.regularFunction();
+messageObj.arrowFunction();
