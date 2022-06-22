@@ -116,3 +116,72 @@ let messageObj = {
 };
 messageObj.regularFunction();
 messageObj.arrowFunction();
+
+// Function Methods and Built in functions
+// just making sure i remembered how to make a constructor
+function Person(name, age) {
+	this.name = name;
+	this.age = age;
+	this.sayHi = name => `Hey, ${this.name}`;
+	this.getName = name => this.name;
+};
+
+let person1 = new Person('Kevin', 32);
+let person2 = new Person('Meghan', 33);
+console.log(person1.sayHi());
+console.log(person2.sayHi());
+
+// Static function using .call method below
+let sayHello = function(message) {
+	console.log(`${message} ${this.name}`);
+};
+
+sayHello.call(person1, 'Hello There');
+sayHello.call(person2, 'Geeeeeneral');
+
+function introduction(name, profession) {
+	console.log(`My name is ${name} and I am a ${profession}`);
+	// console.log(this);
+}
+
+console.log('------- Below is using a standard function invocation -------');
+introduction('Kevin', 'Web Developer');
+console.log('------- Below is using .apply() -------');
+introduction.apply(undefined, ['Kevin', 'Web Developer']);
+console.log('------- Below is using .call() -------');
+introduction.call(undefined, 'Kevin', 'Web Developer');
+
+// .bind() example
+let person3 = ('Elijah');
+console.log(person3);
+
+let getNameCopy = person2.getName.bind(person3);
+console.log(getNameCopy());
+
+// eval()
+let x = 1;
+let y = 2;
+let s = 'abc'
+console.log(eval('x + y + 1')); // 4
+console.log(eval('x + y + s')); // 3abc
+
+// parseInt()
+console.log(parseInt('F', 16)); // 15
+console.log(parseInt('15', 10)); // 15
+console.log(parseInt('Hi', 10)); // NaN
+
+// parseFloat()
+console.log(parseFloat('3.99')); // 3.99
+console.log(parseFloat('3.99e-1')); // 39.9
+console.log(parseFloat('')); // NaN
+
+// escape()
+console.log(escape('text')); // text
+console.log(escape(' ')); // %20
+console.log(escape('abc&%')); // abc%26%25
+
+// unescape()
+console.log(escape('text')); // text
+console.log(escape('%20')); // ' '
+console.log(escape('abc%26%25')); // abc&%
+
